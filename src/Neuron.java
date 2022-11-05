@@ -1,10 +1,12 @@
+import Activation.Activation;
+
 public class Neuron {
     double[] inputs;
     double[] weights;
     double bias;
-    ActivationFunction activation;
+    Activation activation;
 
-    public Neuron(double[] inputs, double[] weights, double bias, ActivationFunction activation) {
+    public Neuron(double[] inputs, double[] weights, double bias, Activation activation) {
         this.inputs = inputs;
         this.weights = weights;
         this.bias = bias;
@@ -17,7 +19,7 @@ public class Neuron {
             output += inputs[i] * weights[i];
         }
         output += this.bias;
-        return this.activation.ReLu(output);
+        return this.activation.ReLu.Activate(output);
     }
 
 }
