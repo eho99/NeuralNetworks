@@ -1,4 +1,4 @@
-import Activation.Activation;
+import Activation.*;
 
 public class Neuron {
     double[] inputs;
@@ -19,7 +19,7 @@ public class Neuron {
             output += inputs[i] * weights[i];
         }
         output += this.bias;
-        return this.activation.ReLu.Activate(output);
+        return this.activation.Activate(output);
     }
 
 }

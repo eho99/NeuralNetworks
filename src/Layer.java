@@ -9,7 +9,8 @@ public class Layer {
     public void populate(Neuron[] neurons) {
         this.neurons = neurons;
     }
-    public double calculateOutput() {
+
+    public double calculateOutputs() {
         double output = 0;
         for (Neuron neuron : neurons) {
             output += neuron.calculateOutput();
