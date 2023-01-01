@@ -8,14 +8,18 @@ public class Activations {
     }
 
     public class ReLu implements Activation {
+        @Override
         public double Activate(double input) {
             return Math.max(0, input);
         }
 
+
+        @Override
         public double Derivative(double input) {
             return (input > 0) ? 1 : 0;
         }
 
+        @Override
         public ActivationType getActivationType() {
             return ActivationType.ReLU;
         }
