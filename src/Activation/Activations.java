@@ -1,21 +1,20 @@
 package Activation;
 
 public class Activations {
-
     public enum ActivationType {
         Sigmoid,
         ReLU
     }
 
-    public class ReLu implements Activation {
+    public static class ReLu implements Activation {
         @Override
-        public double Activate(double input) {
+        public double activate(double input) {
             return Math.max(0, input);
         }
 
 
         @Override
-        public double Derivative(double input) {
+        public double derivative(double input) {
             return (input > 0) ? 1 : 0;
         }
 
@@ -25,13 +24,13 @@ public class Activations {
         }
     }
 
-    public class Sigmoid implements Activation {
-        public double Activate(double input) {
+    public static class Sigmoid implements Activation {
+        public double activate(double input) {
             return 1.0 / (1.0 + Math.exp(-input));
         }
 
-        public double Derivative(double input) {
-            double s = Activate(input);
+        public double derivative(double input) {
+            double s = activate(input);
             return s * (1.0 - s);
         }
 

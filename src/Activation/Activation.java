@@ -2,9 +2,9 @@ package Activation;
 
 public interface Activation {
 
-    public double Activate(double input);
+    public double activate(double input);
 
-    public double Derivative(double input);
+    public double derivative(double input);
 
     public Activations.ActivationType getActivationType();
 
