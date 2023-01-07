@@ -23,16 +23,23 @@ public class Layer {
 
     public void populate() {
         for (int i = 0; i < this.biases.length; ++i) {
-            this.neurons[i] = new Neuron(this.biases[i], this.activation);
+            this.neurons[i] = new Neuron(this.activation);
         }
     }
 
-    public double calculateOutputs(double[] inputs) {
-        double output = 0;
+    public double[] calculateOutputs(double[] inputs) {
+        double[] outputs = new double[this.outgoingNodes];
+
+        double layerActivation = 0;
         for (Neuron neuron : neurons) {
-            output += neuron.calculateOutput(inputs, this.weights);
+            layerActivation += neuron.calculateOutput(inputs);
         }
-        return output;
+
+        for (int i = 0; i < outputs.length; ++i) {
+            outputs[i] = layerActivation;
+        }
+
+        return outputs;
     }
 
     public void initWeights() {

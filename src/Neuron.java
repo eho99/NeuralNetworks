@@ -1,4 +1,5 @@
 import Activation.*;
+import Weight.*;
 
 public class Neuron {
     double[] inputs;
@@ -6,21 +7,36 @@ public class Neuron {
     double bias;
     Activation activation;
 
-    public Neuron(double bias, Activation activation) {
-        this.bias = bias;
+    public Neuron(Activation activation) {
         this.activation = activation;
+
+        this.initBias();
+        this.initWeights();
     }
 
-    public double calculateOutput(double[] inputs, double[] weights) {
+    public double calculateOutput(double[] inputs) {
         this.inputs = inputs;
-        this.weights = weights;
         double output = 0;
 
         for (int i = 0; i < inputs.length; ++i) {
-            output += inputs[i] * weights[i];
+            output += inputs[i] * this.weights[i];
         }
+
         output += this.bias;
-        return this.activation.Activate(output);
+        return this.activation.activate(output);
+    }
+
+    public void initWeights() {
+        Weight w = new Weights.Xavier();
+        if (this.activation.getActivationType() == Activations.ActivationType.ReLU) {
+            w = new Weights.He();
+        }
+
+        this.weights = w.GenerateWeights(this.inputs.length);
+    }
+
+    public void initBias() {
+        this.bias = Math.random();
     }
 
 }
