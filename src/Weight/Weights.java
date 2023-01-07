@@ -9,7 +9,8 @@ public class Weights {
 
     public static class Xavier implements Weight {
 
-        public Xavier() { }
+        public Xavier() {
+        }
 
         @Override
         public double[] GenerateWeights(int numNodesIn) {
@@ -31,6 +32,9 @@ public class Weights {
 
 
     public static class He implements Weight {
+
+        public He() {
+        }
 
         @Override
         public double[] GenerateWeights(int numNodesIn) {
